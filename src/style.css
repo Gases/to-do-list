@@ -3,5 +3,59 @@ html {
 }
  
 *, *:before, *:after {
-    box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto','Helvetica Neue', sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 48px 0px;
+}
+
+.container {
+  margin: 0;
+  padding: 64px 48px;
+}
+
+.sidebar {
+  font-size: 20px;
+  background-color: rgb(245,245,245);
+  height: 100vh;
+  width: 20%;
+}
+
+.fas {
+  text-align: center;
+}
+
+.item {
+  margin: 12px 0px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  cursor: pointer;
+}
+
+.blank {
+  margin: 0;
+  padding: 0;
+  height: 12px;
+}
+
+.blue {
+  color: rgb(25,170,240);
+}
+
+.yellow {
+  color: rgb(250,210,10);
+}
+
+.pink {
+  color: rgb(250,60,110);
 }

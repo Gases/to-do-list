@@ -9,10 +9,7 @@ module.exports = {
     static: './dist',
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'To-Do List',
-      template: 'src/index.html',
-    }),
+    new HtmlWebpackPlugin(),
   ],
   output: {
     filename: 'main.js',

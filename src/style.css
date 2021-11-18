@@ -64,7 +64,6 @@ button {
 .new-event {
   display: flex;
   flex-direction: column;
-  width: 33%;
 }
 
 .date {
@@ -90,6 +89,27 @@ button {
   margin: 0;
   padding: 0;
   height: 12px;
+}
+
+.check-title {
+  display: flex;
+}
+
+.card,
+.new-event {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  padding: 16px; 
+  margin: 16px; 
+  box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.3);
+  border: 1px rgba(0,0,0,0.2) solid;
+  border-radius: 5px;
+}
+
+.event-title {
+  margin: 0;
+  padding: 0 12px;
 }
 
 .blue {

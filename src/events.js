@@ -21,7 +21,10 @@ const displayEvents = () => {
       <h2 class="event-title">${event.title}</h2>
     </div>
     <h3 class="event-description">${event.description}</h3>
-    <p class="event-due-date">Due date: ${event.dueDate}</p>
+    <div class="card-bottom">
+      <p class="event-due-date">Due date: ${event.dueDate}</p>
+      <p><i class="fas fa-trash"></i></p>
+    </div>
     `;
 
     container.appendChild(card);
@@ -35,7 +38,6 @@ const createEvent = () => {
 
   const event = new Event(title.value, description.value, dueDate.value);
   events.push(event);
-  console.log(events);
   displayEvents();
 };
 

@@ -1,15 +1,17 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import isToday from 'date-fns';
-import events from './events';
+import { isToday, parseISO } from 'date-fns';
+import { events } from './events';
 
-const today = [];
+let today = [];
 
 function populateToday() {
   events.forEach((event) => {
-    if (isToday(event.dueDate)) {
+    if (isToday(parseISO(event.dueDate))) {
       today.push(event);
     }
   });
+
+  today = [...new Set(today)];
 }
 
 const displayToday = () => {

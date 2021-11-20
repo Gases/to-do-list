@@ -17,7 +17,8 @@ const createEvent = () => {
   events.push(event);
 };
 
-const newEventForm = (container) => {
+const newEventForm = () => {
+  const container = document.querySelector('.container');
   const newEvent = document.createElement('div');
   newEvent.classList.add('new-event');
 
@@ -32,7 +33,9 @@ const newEventForm = (container) => {
   container.appendChild(newEvent);
 
   const addEvent = document.querySelectorAll('.add-event');
-  addEvent.forEach((button) => button.addEventListener('click', createEvent));
+  addEvent.forEach((button) => button.addEventListener('click', () => {
+    createEvent();
+  }));
 };
 
 export { newEventForm, events };

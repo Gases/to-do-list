@@ -1,4 +1,4 @@
-import events from './events';
+import { events } from './events';
 
 const displayInbox = () => {
   const container = document.querySelector('.container');

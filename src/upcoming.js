@@ -2,21 +2,22 @@
 import isToday from 'date-fns';
 import events from './events';
 
-let upcoming = [];
+const upcoming = [];
 
-const populateUpcoming = () => {
+function populateUpcoming() {
   events.forEach((event) => {
     if (!isToday(event.dueDate)) {
       upcoming.push(event);
     }
   });
-};
+}
 
-const upcomingDisplay = () => {
+const displayUpcoming = () => {
   const container = document.querySelector('.container');
 
   container.innerHTML = '';
 
+  populateUpcoming();
   upcoming.forEach((event) => {
     const card = document.createElement('div');
     card.classList.add('card');
@@ -36,4 +37,4 @@ const upcomingDisplay = () => {
   });
 };
 
-export { upcomingDisplay };
+export default displayUpcoming;

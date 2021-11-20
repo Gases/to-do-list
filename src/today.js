@@ -2,21 +2,22 @@
 import isToday from 'date-fns';
 import events from './events';
 
-let today = [];
+const today = [];
 
-const populateToday = () => {
+function populateToday() {
   events.forEach((event) => {
     if (isToday(event.dueDate)) {
       today.push(event);
     }
   });
-};
+}
 
-const todayDisplay = () => {
+const displayToday = () => {
   const container = document.querySelector('.container');
 
   container.innerHTML = '';
 
+  populateToday();
   today.forEach((event) => {
     const card = document.createElement('div');
     card.classList.add('card');
@@ -36,4 +37,4 @@ const todayDisplay = () => {
   });
 };
 
-export { todayDisplay };
+export default displayToday;

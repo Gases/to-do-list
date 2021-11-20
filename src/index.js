@@ -1,31 +1,32 @@
 import { newEventForm } from './events';
 import { newProject } from './projects';
-import { todayDisplay } from './today';
-import { upcomingDisplay } from './upcoming';
+import { displayToday } from './today';
+import { displayUpcoming } from './upcoming';
+import { displayInbox } from './inbox';
 import './style.css';
 /*
 import { createProject, allProjects } from './projects';
-import { inboxDisplay } from './inbox';
 */
 
 const item = document.querySelectorAll('.item');
 item.forEach((one) => one.addEventListener('click', () => {
   switch (one.id) {
     case 'inbox':
-      inboxDisplay();
+      displayInbox();
       break;
     case 'today':
-      todayDisplay();
+      displayToday();
       break;
     case 'upcoming':
-      upcomingDisplay();
+      displayUpcoming();
       break;
     case 'add-item':
       newEventForm();
       break;
     case 'add-project':
       newProject();
+      break;
     default:
-      inboxDisplay();
+      displayInbox();
   }
 }));

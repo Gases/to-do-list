@@ -1,4 +1,4 @@
-const events = [];
+let events = [];
 
 class Event {
   constructor(title, description, dueDate) {
@@ -59,4 +59,4 @@ const newEventForm = (container) => {
   addEvent.forEach((button) => button.addEventListener('click', createEvent));
 };
 
-export { newEventForm, displayEvents };
+export { newEventForm, displayEvents, events };

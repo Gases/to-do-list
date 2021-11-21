@@ -1,3 +1,5 @@
+import displayInbox from './inbox';
+
 const events = [];
 
 class Event {
@@ -35,6 +37,7 @@ const newEventForm = () => {
   const addEvent = document.querySelectorAll('.add-event');
   addEvent.forEach((button) => button.addEventListener('click', () => {
     createEvent();
+    displayInbox();
   }));
 };
 

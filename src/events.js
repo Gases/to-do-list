@@ -1,6 +1,4 @@
-import displayInbox from './inbox';
-
-const events = [];
+let events = [];
 
 class Event {
   constructor(title, description, dueDate) {
@@ -17,6 +15,44 @@ const createEvent = () => {
 
   const event = new Event(title.value, description.value, dueDate.value);
   events.push(event);
+};
+
+const deleteEvent = (card) => {
+  events = events.filter((event) => event.title !== card.id);
+};
+
+const displayEvents = (date) => {
+  const container = document.querySelector('.container');
+
+  container.innerHTML = '';
+
+  date.forEach((event) => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.id = `${event.title.split(' ').join('-')}`;
+    card.innerHTML = `
+    <div class="check-title">
+      <h2 class="event-title">${event.title}</h2>
+      <input type="checkbox" /> 
+    </div>
+    <h3 class="event-description">${event.description}</h3>
+    <div class="card-bottom">
+      <p class="event-due-date">Due date: ${event.dueDate}</p>
+      <p><i class="fas fa-trash"></i></p>
+    </div>
+    `;
+
+    container.appendChild(card);
+  });
+
+  const card = document.querySelectorAll('.card');
+  card.forEach((one) => one.addEventListener('click', function (e) {
+    if (!e.target.classList.contains('fa-trash')) {
+      return;
+    }
+    deleteEvent(this);
+    displayEvents(events);
+  }));
 };
 
 const newEventForm = () => {
@@ -37,8 +73,8 @@ const newEventForm = () => {
   const addEvent = document.querySelectorAll('.add-event');
   addEvent.forEach((button) => button.addEventListener('click', () => {
     createEvent();
-    displayInbox();
+    displayEvents(events);
   }));
 };
 
-export { newEventForm, events };
+export { displayEvents, newEventForm, events };

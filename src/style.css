@@ -106,6 +106,7 @@ button {
 
 .check-title {
   display: flex;
+  justify-content: space-between;
 }
 
 .card,
@@ -123,7 +124,7 @@ button {
 
 .event-title {
   margin: 0;
-  padding: 0 12px;
+  padding: 0;
 }
 
 .card-bottom {

@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-mutable-exports
 let events = [];
 
 class Event {
@@ -47,6 +48,7 @@ const displayEvents = (date) => {
   });
 
   const card = document.querySelectorAll('.card');
+  // eslint-disable-next-line func-names
   card.forEach((one) => one.addEventListener('click', function (e) {
     if (!e.target.classList.contains('fa-trash')) {
       return;

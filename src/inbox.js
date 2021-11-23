@@ -1,12 +1,13 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-let inbox = [];
+import { events } from './events';
 
-function populateInbox(events) {
+const populateInbox = () => {
+  const inbox = [];
+
   events.forEach((event) => {
     inbox.push(event);
   });
 
-  inbox = [...new Set(inbox)];
-}
+  return [...new Set(inbox)];
+};
 
-export { inbox, populateInbox };
+export default populateInbox;

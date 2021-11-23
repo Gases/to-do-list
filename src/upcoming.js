@@ -1,16 +1,17 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { isToday, parseISO } from 'date-fns';
+import { events } from './events';
 
-let upcoming = [];
+function populateUpcoming() {
+  const upcoming = [];
 
-function populateUpcoming(events) {
   events.forEach((event) => {
     if (!isToday(parseISO(event.dueDate))) {
       upcoming.push(event);
     }
   });
 
-  upcoming = [...new Set(upcoming)];
+  return [...new Set(upcoming)];
 }
 
-export { upcoming, populateUpcoming };
+export default populateUpcoming;

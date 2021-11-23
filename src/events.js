@@ -3,6 +3,7 @@ let events = [];
 class Event {
   constructor(title, description, dueDate) {
     this.title = title;
+    this.id = `${title.split(' ').join('-')}-${parseInt(Math.random() * 100, 10)}`;
     this.description = description;
     this.dueDate = dueDate;
   }
@@ -17,9 +18,9 @@ const createEvent = () => {
   events.push(event);
 };
 
-const deleteEvent = (card) => {
-  events = events.filter((event) => event.title !== card.id);
-};
+function deleteEvent(card) {
+  events = events.filter((event) => event.id !== card.id);
+}
 
 const displayEvents = (date) => {
   const container = document.querySelector('.container');
@@ -29,7 +30,7 @@ const displayEvents = (date) => {
   date.forEach((event) => {
     const card = document.createElement('div');
     card.classList.add('card');
-    card.id = `${event.title.split(' ').join('-')}`;
+    card.id = `${event.id}`;
     card.innerHTML = `
     <div class="check-title">
       <h2 class="event-title">${event.title}</h2>

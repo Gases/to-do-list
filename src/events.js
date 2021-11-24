@@ -1,12 +1,15 @@
 // eslint-disable-next-line import/no-mutable-exports
-let events = Object.keys(localStorage).map((key) => JSON.parse(window.localStorage.getItem(key)));
+let events = Object.keys(localStorage)
+  .filter((key) => key !== 'projects')
+  .map((key) => JSON.parse(window.localStorage.getItem(key)));
 
 class Event {
-  constructor(title, description, dueDate) {
+  constructor(title, description, dueDate, project) {
     this.title = title;
     this.id = `${title.toLowerCase().split(' ').join('-')}-${parseInt(Math.random() * 100, 10)}`;
     this.description = description;
     this.dueDate = dueDate;
+    this.project = project;
   }
 }
 
@@ -43,7 +46,10 @@ const displayEvents = (date) => {
     <h3 class="event-description">${event.description}</h3>
     <div class="card-bottom">
       <p class="event-due-date">Due date: ${event.dueDate}</p>
-      <p><i class="fas fa-trash"></i></p>
+      <div class="modify">
+        <p><i class="fas fa-edit"></i></p>
+        <p><i class="fas fa-trash"></i></p>
+      </div>
     </div>
     `;
 
@@ -69,6 +75,10 @@ const newEventForm = () => {
   newEvent.innerHTML = `
   <textarea class="create-title" placeholder="Insert your event title" required maxlength="50" rows="1"></textarea>
   <textarea class="create-description" placeholder="Describe this event" required maxlength="100" rows="3"></textarea>
+  <label for"project">Project</label>
+  <select name="project">
+    <option value="">Select a project</option>
+  </select>
   <div class="date">
     <label for="due-date">Due date</label>
     <input class="create-due-date" type="date" name="due-date" />

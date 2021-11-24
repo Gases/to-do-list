@@ -1,14 +1,12 @@
 import { newEventForm, displayEvents, events } from './events';
+import { newProject, displayProjects, projects } from './projects';
 import populateToday from './today';
 import populateUpcoming from './upcoming';
 import populateInbox from './inbox';
 import './style.css';
-/*
-import { createProject, allProjects } from './projects';
-import { newProject } from './projects';
-*/
 
 displayEvents(events);
+displayProjects(projects);
 
 const item = document.querySelectorAll('.item');
 item.forEach((one) => one.addEventListener('click', () => {
@@ -25,9 +23,9 @@ item.forEach((one) => one.addEventListener('click', () => {
     case 'add-item':
       newEventForm();
       break;
-    // case 'add-project':
-    //  newProject();
-    //  break;
+    case 'new-project':
+      newProject();
+      break;
     default:
       break;
   }

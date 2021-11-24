@@ -1,10 +1,10 @@
 // eslint-disable-next-line import/no-mutable-exports
-let events = [];
+let events = Object.keys(localStorage).map((key) => JSON.parse(window.localStorage.getItem(key)));
 
 class Event {
   constructor(title, description, dueDate) {
     this.title = title;
-    this.id = `${title.split(' ').join('-')}-${parseInt(Math.random() * 100, 10)}`;
+    this.id = `${title.toLowerCase().split(' ').join('-')}-${parseInt(Math.random() * 100, 10)}`;
     this.description = description;
     this.dueDate = dueDate;
   }
@@ -16,11 +16,14 @@ const createEvent = () => {
   const dueDate = document.querySelector('.create-due-date');
 
   const event = new Event(title.value, description.value, dueDate.value);
+  const key = `${event.id}`;
   events.push(event);
+  window.localStorage.setItem(key, JSON.stringify(event));
 };
 
 function deleteEvent(card) {
   events = events.filter((event) => event.id !== card.id);
+  window.localStorage.removeItem(`${card.id}`);
 }
 
 const displayEvents = (date) => {
@@ -35,7 +38,7 @@ const displayEvents = (date) => {
     card.innerHTML = `
     <div class="check-title">
       <h2 class="event-title">${event.title}</h2>
-      <input type="checkbox" /> 
+      <input type="checkbox" />
     </div>
     <h3 class="event-description">${event.description}</h3>
     <div class="card-bottom">
@@ -75,6 +78,17 @@ const newEventForm = () => {
 
   const addEvent = document.querySelectorAll('.add-event');
   addEvent.forEach((button) => button.addEventListener('click', () => {
+    const createTitle = document.querySelector('.create-title');
+
+    createTitle.addEventListener('click', () => {
+      createTitle.classList.remove('pink');
+    });
+
+    if (!createTitle.value && createTitle.value !== 'Please insert a title!') {
+      createTitle.classList.add('pink');
+      createTitle.placeholder = 'Please insert a title!';
+      return;
+    }
     createEvent();
     displayEvents(events);
   }));

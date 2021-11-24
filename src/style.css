@@ -40,7 +40,7 @@ input {
   border: none;
 }
 
-button {
+.add-event {
   text-align: center;
   font-family: inherit;
   align-self: center;
@@ -142,6 +142,10 @@ button {
 }
 
 .pink {
+  color: rgb(250,60,110);
+}
+
+.pink::placeholder {
   color: rgb(250,60,110);
 }
 
